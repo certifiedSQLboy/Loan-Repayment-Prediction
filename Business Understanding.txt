@@ -1,0 +1,100 @@
+Business Understanding
+
+- Explain the problem statement
+	This project concerns developing a system that will predict customers who are most likely to repay their loans, and those who are not. 
+	Banks are having trouble dealing with debts by customers, as a lot of customers promise to repay their loans, but end up defaulting on the loan, 
+	thus harming and incurring losses for banks.
+
+- The dataset that will be used and the sources of the data.
+	In this project we used a loans dataset provided by one of the banks to perform the data analysis. The dataset covers 2000 loans funded by 
+	the bank.
+	Below is a description of each variable in the data set:
+	customer id - describes a unique identifier for each customer
+	fictional surname - customer's last name
+	age - describes age of the customer
+	gender - describes the gender of the customer
+	years at address - describes the time a customer has lived at the specified address
+	employement status - describes the employement status of the customer
+	country - describes the country a customer lives in
+	current debt - specifies the amount of money a customer owes the bank
+	postcode - customer's post code
+	income - specifies how much the customer makes yearly
+	own home - describes  the status of home ownership
+	ccjs - describes the number of country court judgments for debts a customer has received
+	loan amount - specifies the amount of money that was lent to the customer by the bank
+	outcome - describes whether customer has repaid the loan or not.
+	
+
+- Requirements of the finished product
+	The goal of the project is develop a system that is capable of predicting customers that are most likely to repay their loans and those who 
+	are not. As result, banks will know which customers to allow loan approvals, bringing assurance that the money the lend will be repayed by customers, 
+	plus the interest rate at which it was charged on, thus reducing loan losses, while improving profitability.
+	The dataset provided will be used to build and train a machine learning model that will make such predictions.But before that, some data analysis
+	techniques will be applied on the data such as:
+		- Data preparation: ensures that the data in is the right format and correct, that it does not contain inconsistent data, duplicate or 
+		missing values, which will enable us to obtain accurate insights from it. 
+		- Exploratory data analysis: used to look for trends, patterns and anomalies in the data.
+	Once the data preparation process has been completed, the cleaned dataset will be used to build and train the machine learning model that will eventually
+	help banks make decisions on whether a customer is illegible for a loan approval or not based on the patterns and trends extracted from that process. 
+	Certain algorithms such as Logistic Regression will be used to achieve the ultimate project goal.
+
+- Define technical terminologies
+	model - is file trained to recognize certain patterns. The patterns are trained over a dataset, by providing it an algorithm that it can use to 
+	reason over and learn from those data.
+	patterns - describes data that are correlated or have a relationship 
+	anomalies - 
+	dataset - a collection of data
+	machine learning - development of computerized application that can access data and use it to learn for themselves.
+	data mining - the process of finding anomalies, patterns and correlations within large data sets to predict outcomes.
+	data preparation - 
+	exploration data analysis - 
+
+- Describe project methodology  - 
+	Data Preparation (data cleaning and transformation) - clean the data and prepare it for processing. This will involve identifying anomalies or inconsistencies in the data such 
+	as duplicate values, missing values, making data compatible and making correction to errors.
+	Exploratory Data Analysis - start initial hypotheses test analysis
+	Modelling - based on extracted patterns and features, models will be created to solve the problem banks are currently facing
+	Prediction - use Logistic Regression algorithm to train and evaluate the machine learning model using the cleaned and processed data. 
+	Visualisation - present results to those concerned in a way that it solves the issues set for the project.
+	
+	
+	
+
+Data Preparation
+
+Report the changes you made
+	Replaced inconsistent values in the Gender column with correct values
+	Replaced missing values with Not Available value
+	Removed outliers
+	Used imputation method to fill all Not Available cells with a custom entry "No Gender" 
+	Converted the data type of columns Income, Current_Debt and Loan_Amount to float
+	
+loans_df.groupby("Gender").size() - returns a Series containing counts of unique values. Good for improving data analysis
+loans_df[column].value_counts()
+
+Describe what you did prior to data cleaning process
+	Performed descriptive statistics on the numeric variables in the dataset
+	Checked the number of rows and columns in the dataset
+	Checked the datatype of all columns, to see if values followed the correct format
+	Checked if there were blank values.
+	Looked to see if there were any outliers presnt in the dataset
+	Gave columns more descriptive names
+	loans_df.columns = ["Surname", "Age", "Gender", "Years_at_Address", "Employement_Status", "Country", "Current_Debt", "Postcode", "Income", "Home", "CCJs", "Loan_Amount", "Outcome"]
+	Remove id column, as we won't need it for the analysis
+	Since Gender is a categorical variable and contained no Not Available, checked if it rather contained inconsistent values.
+	
+Show histograms of an example variable "Gender" before data cleaning
+Show histograms of an example variable "Gender" after data cleaning
+
+Carry out descriptive analysis and explain what each represent. Use as many graphs as possible
+	Measures of Frequency
+	Measures of central tendency
+	Measures of dispersion
+	Measures of position
+	Graphs/Plots
+	#Taking a look at the figure above on the left, we can see that the smaller the income a customer makes, the smaller is the amount of loan taken from the bank, with the exception of 2 customers(Loan Amount by Income)
+
+plt.style.use("fivethirtyeight")
+sns.distplot(df0["Loan_Amount"])#Distribution plot - used for continuous data representation
+sns.barplot(df0["Outcome"], df0['Loan_Amount'])#Univariet
+
